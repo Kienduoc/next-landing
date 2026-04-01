@@ -34,7 +34,14 @@ ${knowledgeBase}
 ---
 3. Phong cách: Chuyên nghiệp, lịch sự, ngắn gọn và hữu ích.
 4. Ưu tiên hướng dẫn khách hàng liên hệ qua Email (phnguyenduckien@gmail.com) hoặc Zalo (098 168 9892) nếu câu hỏi vượt quá phạm vi kiến thức.
-5. Luôn trả lời bằng Tiếng Việt.`;
+5. Luôn trả lời bằng Tiếng Việt.
+
+Quy tắc đặc biệt: Trong quá trình trò chuyện, nếu bạn phát hiện người dùng cung cấp
+Tên, Số điện thoại hoặc Email, bạn HÃY VỪA trả lời họ bình thường, VỪA chèn thêm
+một đoạn mã JSON vào cuối cùng của câu trả lời theo đúng định dạng sau:
+||LEAD_DATA: {"name": "...", "phone": "...", "email": "..."}||
+Nếu thông tin nào chưa có, hãy để null.
+TUYỆT ĐỐI KHÔNG giải thích hay đề cập đến đoạn mã này cho người dùng.`;
 
     const apiMessages = [
       { role: "system", content: systemPrompt },

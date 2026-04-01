@@ -44,7 +44,33 @@ export default function Chatbot() {
       if (!response.ok) throw new Error("API Error");
 
       const data: Message = await response.json();
-      setMessages((prev) => [...prev, data]);
+      
+      let finalContent = data.content;
+      // Tìm mảnh ghép (tag) chứa thông tin JSON
+      const leadDataMatch = finalContent.match(/\|\|LEAD_DATA:\s*({.*?})\s*\|\|/);
+      
+      if (leadDataMatch && leadDataMatch[1]) {
+        try {
+          const leadInfo = JSON.parse(leadDataMatch[1]);
+          console.log("🌟 Phát hiện khách hàng tiềm năng:", leadInfo);
+          
+          // GỬI DATA NGẦM LÊN GOOGLE SHEETS
+          fetch("https://script.google.com/macros/s/AKfycbxdVHUssw0877eQOL37Ux9rYCvm5E2posmbQ-PgpKmSxxbCA7BTSxL1kXsWjpL8gSH3FQ/exec", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(leadInfo),
+          }).catch((err) => console.error("Lỗi kết nối Webhook:", err));
+        } catch (e) {
+          console.error("Lỗi bóc tách JSON:", e);
+        }
+        // Xóa tag ẩn khỏi câu từ chối hiển thị cho User
+        finalContent = finalContent.replace(/\|\|LEAD_DATA:\s*({.*?})\s*\|\|/g, "").trim();
+      }
+
+      setMessages((prev) => [...prev, { ...data, content: finalContent }]);
     } catch (error) {
       setMessages((prev) => [
         ...prev,
@@ -93,7 +119,7 @@ export default function Chatbot() {
                   className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-2 text-[0.875rem] leading-[1.5] ${m.role === "user"
+                    className={`max-w-[85%] rounded-2xl px-4 py-2 text-[0.875rem] leading-[1.5] whitespace-pre-wrap ${m.role === "user"
                       ? "bg-primary text-white rounded-br-sm"
                       : "bg-bg-2 text-text-muted rounded-bl-sm border border-border"
                       }`}
