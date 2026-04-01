@@ -9,8 +9,8 @@ const CONTACT_METHODS = [
     id: "email",
     icon: "✉",
     label: "Email trực tiếp",
-    value: "hello@architect.ai",
-    href: "mailto:hello@architect.ai",
+    value: "phnguyenduckien@gmail.com",
+    href: "mailto:phnguyenduckien@gmail.com",
     external: false,
   },
   {
@@ -71,7 +71,7 @@ export default function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
+
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -186,7 +186,7 @@ export default function Contact() {
                   type="email"
                   id="contact-email-input"
                   name="email"
-                  placeholder="your@email.com"
+                  placeholder="phnguyenduckien@gmail.com"
                   required
                   autoComplete="email"
                   className="w-full rounded-md border border-border bg-bg/60 px-4 py-3 text-[0.9rem] text-text placeholder:text-text-faint transition-all focus:border-primary focus:shadow-[0_0_0_3px_var(--color-primary-glow)] focus:outline-none"

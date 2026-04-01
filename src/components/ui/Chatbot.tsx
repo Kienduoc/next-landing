@@ -94,8 +94,8 @@ export default function Chatbot() {
                 >
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-2 text-[0.875rem] leading-[1.5] ${m.role === "user"
-                        ? "bg-primary text-white rounded-br-sm"
-                        : "bg-bg-2 text-text-muted rounded-bl-sm border border-border"
+                      ? "bg-primary text-white rounded-br-sm"
+                      : "bg-bg-2 text-text-muted rounded-bl-sm border border-border"
                       }`}
                   >
                     {m.content}
