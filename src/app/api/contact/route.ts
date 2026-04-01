@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
     const { name, email, subject, message } = await req.json();
 
     // 1. Basic Validation
@@ -16,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     // 2. Kiểm tra API Key đã được cấu hình chưa
-    if (!process.env.RESEND_API_KEY) {
+    if (!apiKey) {
       console.warn("Chưa cấu hình RESEND_API_KEY - giả lập thành công");
       // Simulate delay if no API key
       await new Promise((resolve) => setTimeout(resolve, 800));
@@ -25,6 +24,8 @@ export async function POST(req: Request) {
         message: "Gửi thông tin thành công! (Chế độ mô phỏng chưa có API Key)",
       });
     }
+
+    const resend = new Resend(apiKey);
 
     // 3. Gửi Email thật qua Resend
     // Lưu ý: Nếu chưa có tên miền (domain) xác thực trên Resend,
