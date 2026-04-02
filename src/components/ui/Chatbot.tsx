@@ -195,9 +195,9 @@ export default function Chatbot() {
               {messages.length === 1 && !isLoading && (
                 <div className="flex flex-wrap gap-2 pt-2">
                   {[
-                    "Khóa học K12 là gì?",
+                    "Bạn cung cấp dịch vụ gì?",
                     "Giải pháp ISO AI",
-                    "Liên hệ tư vấn Zalo",
+                    "Tôi muốn liên hệ Zalo với bạn",
                   ].map((suggestion) => (
                     <button
                       key={suggestion}
