@@ -50,7 +50,7 @@ export default function Footer() {
           {/* Social */}
           <div className="flex gap-3">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/phnguyenduckien/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex size-[38px] items-center justify-center rounded-full border border-border bg-bg-card text-text-muted transition-all hover:border-border-hover hover:bg-primary-glow hover:text-primary-light"

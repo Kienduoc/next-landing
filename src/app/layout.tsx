@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Chatbot from "@/components/ui/Chatbot";
+import FloatingContact from "@/components/ui/FloatingContact";
 
 /* ——— Google Fonts loaded via next/font (self-hosted, no CLS) ——— */
 const inter = Inter({
@@ -88,6 +89,7 @@ export default function RootLayout({
       <body className="min-h-screen overflow-x-hidden font-sans leading-relaxed text-text bg-bg selection:bg-primary/30 selection:text-white">
         {children}
         <Chatbot />
+        <FloatingContact />
       </body>
     </html>
   );

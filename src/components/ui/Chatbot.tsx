@@ -8,7 +8,7 @@ type Message = {
 };
 
 // URL của Google Apps Script Web App
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtPSGfkGEgqjGATilRUGaFjGAXEFLf7Raumf7_heCsU6qSKIrbA2RNBixwSihIDhqICw/exec';
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || '';
 
 // Tạo Session ID duy nhất cho mỗi phiên tải trang
 const AI_CHAT_SESSION_ID = 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);

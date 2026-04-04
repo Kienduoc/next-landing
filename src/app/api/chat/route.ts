@@ -5,8 +5,8 @@ import path from "path";
 
 // Khởi tạo OpenAI client với custom Base URL và API Key theo yêu cầu
 const openai = new OpenAI({
-  apiKey: process.env.CHATBOT_API_KEY || "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f",
-  baseURL: process.env.CHATBOT_BASE_URL || "https://9router.vuhai.io.vn/v1",
+  apiKey: process.env.CHATBOT_API_KEY,
+  baseURL: process.env.CHATBOT_BASE_URL,
 });
 
 export async function POST(req: Request) {
